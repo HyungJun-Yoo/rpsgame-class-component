@@ -99,11 +99,11 @@ function App() {
     if (user.name === computer.name) {
       return ['tie', 'tie']
     } else if (user.name === 'Rock') {
-      return computer.name === 'Scissors' ? ['lose', 'win'] : ['win', 'lose']
+      return computer.name === 'Scissors' ? ['win', 'lose'] : ['lose', 'win']
     } else if (user.name === 'Scissors') {
-      return computer.name === 'Paper' ? ['lose', 'win'] : ['win', 'lose']
+      return computer.name === 'Paper' ? ['win', 'lose'] : ['lose', 'win']
     } else if (user.name === 'Paper') {
-      return computer.name === 'Rock' ? ['lose', 'win'] : ['win', 'lose']
+      return computer.name === 'Rock' ? ['win', 'lose'] : ['lose', 'win']
     }
   }
 
