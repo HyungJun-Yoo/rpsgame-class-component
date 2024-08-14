@@ -24,7 +24,7 @@ const Box = ({ title, item }) => {
       className={`border-solid border-4 ${borderColor} rounded-lg h-[450px] p-6 flex flex-col items-center justify-between transition-all duration-300 max-sm:w-[150px] max-md:h-[400px]`}
     >
       <h1
-        className={`text-4xl font-semibold mb-2 ${fontColor} transition-all duration-300 max-sm:text-2xl`}
+        className={`text-3xl font-semibold mb-2 ${fontColor} transition-all duration-300 max-sm:text-2xl`}
       >
         {title}
       </h1>
