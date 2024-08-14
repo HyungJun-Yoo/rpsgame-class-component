@@ -32,14 +32,12 @@ const Box = ({ title, item }) => {
       <div className='w-full flex justify-center bg-white'>
         {select && select.img ? (
           <img
-            className='w-[150px] h-[150px] object-contain rounded-full shadow-lg'
+            className='w-[150px] object-contain rounded-full shadow-lg'
             src={select.img}
             alt={select.name}
           />
         ) : (
-          <div className='w-[150px] h-[150px] bg-gray-200 rounded-full flex items-center justify-center shadow-lg'>
-            <span className='text-gray-500'></span>
-          </div>
+          <div className='w-[150px] h-[150px] bg-gray-200 rounded-full flex items-center justify-center shadow-lg max-sm:w-[94px] max-sm:h-[94px]'></div>
         )}
       </div>
       <h2
