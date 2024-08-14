@@ -11,14 +11,23 @@ const Box = ({ title, item }) => {
       ? 'border-red-500'
       : 'border-gray-300'
 
+  // 결과에 따라 폰트 색상 설정
+  const fontColor =
+    result === 'win'
+      ? 'text-green-400'
+      : result === 'lose'
+      ? 'text-red-400'
+      : 'text-gray-400'
+
   return (
     <div
-      className={`border-solid border-4 ${borderColor} rounded-lg min-h-[450px] md:min-h-[500px] p-6 flex flex-col items-center justify-between transition-all duration-300 max-sm:w-[150px]`}
+      className={`border-solid border-4 ${borderColor} rounded-lg h-[450px] p-6 flex flex-col items-center justify-between transition-all duration-300 max-sm:w-[150px] max-md:h-[400px]`}
     >
-      <h1 className='text-xl font-semibold mb-2'>{title}</h1>
-      <h2 data-testid='item-name' className='text-lg'>
-        {select && select.name}
-      </h2>
+      <h1
+        className={`text-4xl font-semibold mb-2 ${fontColor} transition-all duration-300 max-sm:text-2xl`}
+      >
+        {title}
+      </h1>
 
       <div className='w-full flex justify-center bg-white'>
         {select && select.img ? (
@@ -33,7 +42,11 @@ const Box = ({ title, item }) => {
           </div>
         )}
       </div>
-      <h2 className='text-lg mt-2'>{item && result}</h2>
+      <h2
+        className={`text-3xl mt-2 font-bold ${fontColor} transition-all duration-300 max-sm:text-2xl`}
+      >
+        {item && result}
+      </h2>
     </div>
   )
 }

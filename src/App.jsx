@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react'
 import Box from './component/Box'
-import Modal from './component/Modal' // 모달 컴포넌트 import
+import Modal from './component/Modal'
+import rock from './assets/rock.png'
+import scissors from './assets/scissors.png'
+import paper from './assets/paper.png'
 
 const choice = {
   rock: {
     name: 'Rock',
-    img: 'https://media.istockphoto.com/photos/stone-pebble-gray-picture-id1288973456?b=1&k=20&m=1288973456&s=170667a&w=0&h=GBGgp4yrZv4ooDBws8yHF24sJ3rkEpObYsBWpVNKFT8=',
+    img: rock,
   },
   scissors: {
     name: 'Scissors',
-    img: 'https://www.ikea.com/kr/en/images/products/sy-scissors__0112301_pe263788_s5.jpg?f=s',
+    img: scissors,
   },
   paper: {
     name: 'Paper',
-    img: 'https://www.collinsdictionary.com/images/full/paper_111691001.jpg',
+    img: paper,
   },
 }
 
@@ -58,11 +61,11 @@ function App() {
   const play = (userChoice) => {
     if (gameOver) return // 게임이 끝나면 더 이상 진행하지 않음
 
-    let userChioce = choice[userChoice]
-    let computerChoice = randomChoice()
+    const userChioce = choice[userChoice]
+    const computerChoice = randomChoice()
 
     // 결과 기록 [유저의 승무패, 컴퓨터의 승무패]
-    let [userResult, computerResult] = judgement(userChioce, computerChoice)
+    const [userResult, computerResult] = judgement(userChioce, computerChoice)
 
     // 점수 기록
     setScore((prev) =>
@@ -88,9 +91,9 @@ function App() {
 
   // 컴퓨터의 랜덤 선택
   const randomChoice = () => {
-    let itemArray = Object.keys(choice)
-    let randomItem = Math.floor(Math.random() * itemArray.length)
-    let final = itemArray[randomItem]
+    const itemArray = Object.keys(choice)
+    const randomItem = Math.floor(Math.random() * itemArray.length)
+    const final = itemArray[randomItem]
     return choice[final]
   }
 
@@ -124,8 +127,8 @@ function App() {
   }
 
   return (
-    <div className='h-screen bg-gradient-to-b from-pink-200 to-purple-300 flex flex-col justify-center items-center'>
-      <div className='w-full max-w-4xl h-[90%] bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-6 max-sm:w-[95%]'>
+    <div className='h-screen bg-gradient-to-b from-pink-200 to-purple-300 flex flex-col justify-center items-center min-h-[800px]'>
+      <div className='w-full max-w-4xl h-[90%] bg-white rounded-xl shadow-lg flex flex-col items-center justify-center p-6 max-sm:w-[95%] min-h-[600px]'>
         {!gameStarted ? (
           <div className='flex flex-col items-center'>
             <h2
@@ -173,9 +176,9 @@ function App() {
             </button>
           </div>
         ) : (
-          <>
-            <div className='flex flex-col items-center mb-8'>
-              <div className='flex flex-col items-center mb-8'>
+          <div className='flex flex-col h-full justify-between min-h-[600px]'>
+            <div className='flex h-full flex-col justify-between items-center'>
+              <div className='flex flex-col items-center'>
                 <div className='bg-gradient-to-r from-purple-400 to-blue-500 rounded-lg p-4 shadow-lg mb-4 w-full max-w-xs text-center'>
                   <div className='text-xl font-bold text-white'>{`타이머: ${timer}`}</div>
                 </div>
@@ -187,28 +190,29 @@ function App() {
                 <Box title='User' item={user} />
                 <Box title='Computer' item={computer} />
               </div>
+
+              <div className='flex justify-center space-x-4'>
+                <button
+                  onClick={() => play('scissors')}
+                  className='bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300'
+                >
+                  가위
+                </button>
+                <button
+                  onClick={() => play('rock')}
+                  className='bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300'
+                >
+                  바위
+                </button>
+                <button
+                  onClick={() => play('paper')}
+                  className='bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300'
+                >
+                  보
+                </button>
+              </div>
             </div>
-            <div className='flex justify-center space-x-4'>
-              <button
-                onClick={() => play('scissors')}
-                className='bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300'
-              >
-                가위
-              </button>
-              <button
-                onClick={() => play('rock')}
-                className='bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300'
-              >
-                바위
-              </button>
-              <button
-                onClick={() => play('paper')}
-                className='bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300'
-              >
-                보
-              </button>
-            </div>
-          </>
+          </div>
         )}
       </div>
       <Modal isOpen={modalOpen} onClose={handleCloseModal} score={score} />{' '}
