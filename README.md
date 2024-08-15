@@ -11,6 +11,8 @@
 
 ### 데모 페이지
 
+[여기에서 게임을 확인해보세요!](https://rpsgame-class-component.vercel.app/)
+
 ### 이미지
 
 <img src="src/assets/game_preview_1.png" alt="게임 스크린샷" width="600" />
